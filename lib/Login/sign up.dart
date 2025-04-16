@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:treending/Login/sign%20in.dart';
@@ -47,7 +48,7 @@ class _Sign_UpState extends State<Sign_Up> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
         hintText: "Name",
       ),
     );
@@ -66,7 +67,7 @@ class _Sign_UpState extends State<Sign_Up> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
         hintText: "Last Name",
       ),
     );
@@ -90,7 +91,7 @@ class _Sign_UpState extends State<Sign_Up> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
         hintText: "E-mail",
       ),
     );
@@ -114,7 +115,7 @@ class _Sign_UpState extends State<Sign_Up> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
         hintText: "Password",
       ),
     );
@@ -134,7 +135,7 @@ class _Sign_UpState extends State<Sign_Up> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
         hintText: "Confirm Password",
       ),
     );
@@ -145,9 +146,9 @@ class _Sign_UpState extends State<Sign_Up> {
       width: MediaQuery.of(context).size.width / 1.8,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all<Color>(Colors.red),
+          backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.r)),
           ),
         ),
         onPressed: () {
@@ -155,7 +156,7 @@ class _Sign_UpState extends State<Sign_Up> {
         },
         child: Text(
           'Sign Up',
-          style: TextStyle(color: Colors.white, fontSize: 20.0),
+          style: TextStyle(color: Colors.white, fontSize: 20.sp),
         ),
       ),
     );
@@ -244,6 +245,6 @@ class _Sign_UpState extends State<Sign_Up> {
         .doc(user.uid)
         .set(userModel.tomap());
     Fluttertoast.showToast(msg: "Account created successfully :)");
-    Get.to(() => Dashboard());
+    Get.to(() => HomeScreen());
   }
 }

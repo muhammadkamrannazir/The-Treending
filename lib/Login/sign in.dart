@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, file_names
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
@@ -33,7 +34,7 @@ class _Sign_InState extends State<Sign_In> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 60),
+                  SizedBox(height: 60.h),
                   //--------------------------------Email
                   TextFormField(
                     autofocus: false,
@@ -55,7 +56,7 @@ class _Sign_InState extends State<Sign_In> {
                     },
                     textInputAction: TextInputAction.next,
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 50.h),
                   //------------------------------Password
                   TextFormField(
                     autofocus: false,
@@ -78,7 +79,7 @@ class _Sign_InState extends State<Sign_In> {
                     },
                     textInputAction: TextInputAction.done,
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 50.h),
                   //------------------------------Button
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 18,
@@ -86,18 +87,17 @@ class _Sign_InState extends State<Sign_In> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: WidgetStateProperty.all<Color>(
-                          Colors.red,
+                          Colors.blue,
                         ),
-                        shape:
-                            WidgetStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                            ),
+                        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
                       ),
                       child: Text(
                         'Sign In',
-                        style: TextStyle(color: Colors.white, fontSize: 20.0),
+                        style: TextStyle(color: Colors.white, fontSize: 20.sp),
                       ),
                       onPressed:
                           () => signIn(
@@ -106,7 +106,8 @@ class _Sign_InState extends State<Sign_In> {
                           ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 5.h),
+
                   // TextButton(
                   //   onPressed: () {},
                   //   child: const Text(
@@ -144,7 +145,6 @@ class _Sign_InState extends State<Sign_In> {
                   //     style: TextStyle(color: Colors.black),
                   //   ),
                   // ),
-           
                 ],
               ),
             ),
@@ -161,7 +161,7 @@ class _Sign_InState extends State<Sign_In> {
           .then(
             (uid) => {
               Fluttertoast.showToast(msg: "Login Successful"),
-              Get.to(Dashboard()),
+              Get.to(HomeScreen()),
             },
           )
           // ignore: body_might_complete_normally_catch_error

@@ -1,16 +1,17 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore, file_names
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'sign in.dart';
 import 'sign up.dart';
 
-class Tabs extends StatefulWidget {
-  const Tabs({super.key});
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({super.key});
   @override
-  _TabsState createState() => _TabsState();
+  _AuthScreenState createState() => _AuthScreenState();
 }
 
-class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
+class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   @override
   void initState() {
@@ -26,7 +27,7 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
         body: Container(
           decoration: BoxDecoration(color: Colors.white),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(27, 50, 27, 0),
+            padding: EdgeInsets.fromLTRB(27.w, 50.h, 27.w, 0),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -35,34 +36,31 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 50),
+                  SizedBox(height: 50.h),
                   Container(
-                    height: 40,
-                    width: 250,
+                    height: 40.h,
+                    width: 250.w,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(50.r),
                     ),
                     child: TabBar(
                       indicator: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(30.r),
+                        color: Colors.blue,
                       ),
-                      unselectedLabelColor: Colors.red,
+                      unselectedLabelColor: Colors.blue,
                       labelColor: Colors.white,
                       controller: _tabController,
                       indicatorSize: TabBarIndicatorSize.tab,
-                      indicatorColor: Colors.red,
+                      indicatorColor: Colors.blue,
                       tabs: const [Tab(text: 'Login'), Tab(text: 'Register')],
                     ),
                   ),
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
-                      children:  [
-                        Sign_In(), 
-                      Sign_Up(),
-                      ],
+                      children: [Sign_In(), Sign_Up()],
                     ),
                   ),
                 ],

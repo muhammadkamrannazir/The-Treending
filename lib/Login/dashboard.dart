@@ -1,19 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import 'tabs.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _HomeScreenState extends State<HomeScreen> {
   String? fullName;
   String? email;
   bool isLoading = true;
@@ -55,7 +56,7 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue,
         title: const Text(
           'The Treending',
           style: TextStyle(color: Colors.white),
@@ -65,7 +66,7 @@ class _DashboardState extends State<Dashboard> {
             icon: const Icon(Icons.logout),
             onPressed: () {
               FirebaseAuth.instance.signOut().then((value) {
-                Get.offAll(Tabs());
+                Get.offAll(AuthScreen());
               });
             },
           ),
@@ -76,15 +77,15 @@ class _DashboardState extends State<Dashboard> {
               ? const Center(child: CircularProgressIndicator())
               : Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.w),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (fullName != null)
                         Text(
                           'Welcome to Treending Startup\n$fullName',
-                          style: const TextStyle(
-                            fontSize: 23,
+                          style: TextStyle(
+                            fontSize: 23.sp,
                             color: Colors.black,
                           ),
                           textAlign: TextAlign.center,
@@ -92,8 +93,8 @@ class _DashboardState extends State<Dashboard> {
                       if (email != null)
                         Text(
                           'Email: $email',
-                          style: const TextStyle(
-                            fontSize: 18,
+                          style: TextStyle(
+                            fontSize: 18.sp,
                             color: Colors.black54,
                           ),
                           textAlign: TextAlign.center,
