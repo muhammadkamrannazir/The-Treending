@@ -6,19 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:treending/Login/sign%20in.dart';
+import 'package:treending/auth/sign%20in.dart';
 
 import 'Model/user_model.dart';
-import 'dashboard.dart';
+import '../dashboard/dashboard.dart';
 
-class Sign_Up extends StatefulWidget {
-  const Sign_Up({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<Sign_Up> createState() => _Sign_UpState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _Sign_UpState extends State<Sign_Up> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController fullnameController = TextEditingController();
@@ -245,6 +245,6 @@ class _Sign_UpState extends State<Sign_Up> {
         .doc(user.uid)
         .set(userModel.tomap());
     Fluttertoast.showToast(msg: "Account created successfully :)");
-    Get.to(() => HomeScreen());
+    Get.off(() => HomeScreen());
   }
 }

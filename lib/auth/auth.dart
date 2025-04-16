@@ -11,7 +11,8 @@ class AuthScreen extends StatefulWidget {
   _AuthScreenState createState() => _AuthScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateMixin {
+class _AuthScreenState extends State<AuthScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   @override
   void initState() {
@@ -60,7 +61,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
-                      children: [Sign_In(), Sign_Up()],
+                      children: [SignInScreen(), SignUpScreen()],
                     ),
                   ),
                 ],

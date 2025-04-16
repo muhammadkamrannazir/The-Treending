@@ -5,16 +5,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-import 'dashboard.dart';
+import '../dashboard/dashboard.dart';
 
-class Sign_In extends StatefulWidget {
-  const Sign_In({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<Sign_In> createState() => _Sign_InState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _Sign_InState extends State<Sign_In> {
+class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();

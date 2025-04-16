@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-import 'tabs.dart';
+import '../auth/auth.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
