@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "413240978011",
+    "project_id": "the-treending-b5ab2",
+    "storage_bucket": "the-treending-b5ab2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413240978011:android:d2ca8a13412d4ddf6d6d7e",
+        "android_client_info": {
+          "package_name": "com.example.treending"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_5PR07jjNSwK577g8OO0TNEuaEDE55h4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

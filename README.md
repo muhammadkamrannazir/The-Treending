@@ -1,4 +1,4 @@
-# the_treendiing
+# treending
 
 A new Flutter project.
 

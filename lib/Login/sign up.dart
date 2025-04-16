@@ -5,8 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:the_treendiing/Login/Model/user_model.dart';
+import 'package:treending/Login/sign%20in.dart';
 
+import 'Model/user_model.dart';
 import 'dashboard.dart';
 
 class Sign_Up extends StatefulWidget {
@@ -47,7 +48,7 @@ class _Sign_UpState extends State<Sign_Up> {
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: "First Name",
+        hintText: "Name",
       ),
     );
     //--------------------------------user Name
@@ -171,8 +172,8 @@ class _Sign_UpState extends State<Sign_Up> {
                 children: [
                   SizedBox(height: MediaQuery.of(context).size.height / 30),
                   fullnamefeild,
-                  SizedBox(height: MediaQuery.of(context).size.height / 30),
-                  usernamefeild,
+                  // SizedBox(height: MediaQuery.of(context).size.height / 30),
+                  // usernamefeild,
                   SizedBox(height: MediaQuery.of(context).size.height / 30),
                   emailfeild,
                   SizedBox(height: MediaQuery.of(context).size.height / 30),
@@ -182,31 +183,31 @@ class _Sign_UpState extends State<Sign_Up> {
                   SizedBox(height: MediaQuery.of(context).size.height / 20),
                   loginbutton,
                   SizedBox(height: MediaQuery.of(context).size.height / 60),
-                  Text(
-                    'Or',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.0,
-                      fontFamily: 'WorkSansMedium',
-                    ),
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height / 60),
-                  TextButton.icon(
-                    style: TextButton.styleFrom(
-                      textStyle: const TextStyle(color: Colors.black),
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(24.0),
-                      ),
-                    ),
-                    onPressed: () => {},
-                    icon: const Icon(Icons.g_mobiledata),
-                    label: const Text(
-                      'Sign up with google',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
+                  // Text(
+                  //   'Or',
+                  //   style: TextStyle(
+                  //     color: Colors.black,
+                  //     fontSize: 16.0,
+                  //     fontFamily: 'WorkSansMedium',
+                  //   ),
+                  // ),
+                  // SizedBox(height: MediaQuery.of(context).size.height / 60),
+                  // TextButton.icon(
+                  //   style: TextButton.styleFrom(
+                  //     textStyle: const TextStyle(color: Colors.black),
+                  //     backgroundColor: Colors.white,
+                  //     shape: RoundedRectangleBorder(
+                  //       side: BorderSide(color: Colors.grey),
+                  //       borderRadius: BorderRadius.circular(24.0),
+                  //     ),
+                  //   ),
+                  //   onPressed: () => {},
+                  //   icon: const Icon(Icons.g_mobiledata),
+                  //   label: const Text(
+                  //     'Sign up with google',
+                  //     style: TextStyle(color: Colors.black),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -223,6 +224,7 @@ class _Sign_UpState extends State<Sign_Up> {
           .then((uid) => {postDetailsToFirebase()})
           .catchError((e) {
             Fluttertoast.showToast(msg: e!.message);
+            return <dynamic>{};
           });
     }
   }
@@ -235,7 +237,7 @@ class _Sign_UpState extends State<Sign_Up> {
     userModel.email = user!.email;
     userModel.uid = user.uid;
     userModel.fullName = fullnameController.text;
-    userModel.userName = usernameController.text;
+    // userModel.userName = usernameController.text;
 
     await firebaseFirestore
         .collection('users')

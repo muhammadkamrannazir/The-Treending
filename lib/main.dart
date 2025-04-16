@@ -1,29 +1,20 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'Login/tabs.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:treending/Login/dashboard.dart';
+import 'package:treending/Login/tabs.dart';
 
-
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    // options: FirebaseOptions(
-    //   apiKey: "AIzaSyDYXJ2ylisknujhBCBz1Pd2vEI2RDkCNUw",
-    //   authDomain: "itour-login-only.firebaseapp.com",
-    //   projectId: "itour-login-only",
-    //   storageBucket: "itour-login-only.appspot.com",
-    //   messagingSenderId: "724248870891",
-    //   appId: "1:724248870891:web:2e988d0eb362026fe5e3ae",
-    // ),
+    // options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(
-    const MyApp(),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +22,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         // backgroundColor: Colors.black,
-        body: Tabs(),
+        body: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (c, userSnapshot) {
+            if (userSnapshot.hasData) {
+              return Dashboard();
+ }
+            return Tabs();
+          },
+        ),
       ),
     );
   }

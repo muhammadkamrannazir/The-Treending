@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore, file_names
 import 'package:flutter/material.dart';
-import 'package:the_treendiing/Login/sign%20in.dart';
-import 'package:the_treendiing/Login/sign%20up.dart';
+
+import 'sign in.dart';
+import 'sign up.dart';
 
 class Tabs extends StatefulWidget {
   const Tabs({super.key});
@@ -23,9 +24,9 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
       length: 2,
       child: Scaffold(
         body: Container(
-          decoration: BoxDecoration(color: Colors.red),
+          decoration: BoxDecoration(color: Colors.white),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(27, 127, 27, 0),
+            padding: EdgeInsets.fromLTRB(27, 50, 27, 0),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -58,7 +59,10 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
-                      children: const [Sign_In(), Sign_Up()],
+                      children:  [
+                        Sign_In(), 
+                      Sign_Up(),
+                      ],
                     ),
                   ),
                 ],

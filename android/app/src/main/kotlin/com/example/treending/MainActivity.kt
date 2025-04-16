@@ -1,4 +1,4 @@
-package com.tejas.the_treendiing
+package com.example.treending
 
 import io.flutter.embedding.android.FlutterActivity
 
