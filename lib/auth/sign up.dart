@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:treending/auth/sign%20in.dart';
 
 import 'Model/user_model.dart';
 import '../dashboard/dashboard.dart';
