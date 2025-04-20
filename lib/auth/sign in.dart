@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:treending/widgets/button.dart';
+import 'package:treending/widgets/textfiled.dart';
 
 import '../dashboard/dashboard.dart';
 
@@ -36,11 +38,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 children: [
                   SizedBox(height: 60.h),
                   //--------------------------------Email
-                  TextFormField(
-                    autofocus: false,
+                  CustomTextField(
+                    hintText: 'E mail',
                     controller: emailcontroller,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(hintText: 'E-mail'),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return ("Please Enter Email");
@@ -55,15 +55,14 @@ class _SignInScreenState extends State<SignInScreen> {
                       emailcontroller.text = value!;
                     },
                     textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   SizedBox(height: 50.h),
                   //------------------------------Password
-                  TextFormField(
-                    autofocus: false,
-                    obscureText: true,
+                  CustomTextField(
+                    hintText: 'Password',
                     controller: passwordcontroller,
-                    keyboardType: TextInputType.visiblePassword,
-                    decoration: const InputDecoration(hintText: 'Password'),
+                    obscureText: true,
                     validator: (value) {
                       RegExp regex = RegExp(r'^.{6,}$');
                       if (value!.isEmpty) {
@@ -78,33 +77,17 @@ class _SignInScreenState extends State<SignInScreen> {
                       passwordcontroller.text = value!;
                     },
                     textInputAction: TextInputAction.done,
+                    keyboardType: TextInputType.visiblePassword,
                   ),
                   SizedBox(height: 50.h),
                   //------------------------------Button
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 18,
-                    width: MediaQuery.of(context).size.width / 1.8,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all<Color>(
-                          Colors.blue,
+                  CustomButton(
+                    name: 'Sign In',
+                    onPressed:
+                        () => signIn(
+                          emailcontroller.text,
+                          passwordcontroller.text,
                         ),
-                        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        'Sign In',
-                        style: TextStyle(color: Colors.white, fontSize: 20.sp),
-                      ),
-                      onPressed:
-                          () => signIn(
-                            emailcontroller.text,
-                            passwordcontroller.text,
-                          ),
-                    ),
                   ),
                   SizedBox(height: 5.h),
 
