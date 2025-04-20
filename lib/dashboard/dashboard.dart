@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:treending/utils/colors.dart';
 
 import '../auth/auth.dart';
 
@@ -56,10 +57,10 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.primary,
         title: const Text(
           'The Treending',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
         ),
         actions: [
           IconButton(

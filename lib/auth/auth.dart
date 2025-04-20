@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore, file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:treending/utils/colors.dart';
 
 import 'sign in.dart';
 import 'sign up.dart';
@@ -28,7 +29,7 @@ class _AuthScreenState extends State<AuthScreen>
         body: Container(
           decoration: BoxDecoration(color: Colors.white),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(27.w, 50.h, 27.w, 0),
+            padding: EdgeInsets.fromLTRB(0.w, 50.h, 0.w, 0),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -43,18 +44,22 @@ class _AuthScreenState extends State<AuthScreen>
                     width: 250.w,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(50.r),
+                      borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: TabBar(
                       indicator: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.r),
-                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(8.r),
+                        color: AppColors.primary,
                       ),
-                      unselectedLabelColor: Colors.blue,
+                      unselectedLabelColor: AppColors.primary,
                       labelColor: Colors.white,
                       controller: _tabController,
                       indicatorSize: TabBarIndicatorSize.tab,
-                      indicatorColor: Colors.blue,
+                      indicatorWeight: 0,
+                      // dividerColor: Colors.white,
+                      dividerHeight: 0,
+                      indicatorPadding: EdgeInsets.zero,
+                      indicatorColor: AppColors.primary,
                       tabs: const [Tab(text: 'Login'), Tab(text: 'Register')],
                     ),
                   ),

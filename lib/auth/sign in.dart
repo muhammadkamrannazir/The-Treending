@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:treending/utils/styles.dart';
 import 'package:treending/widgets/button.dart';
 import 'package:treending/widgets/textfiled.dart';
 
@@ -30,13 +31,13 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Center(
           child: Form(
             key: _formKey,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width / 1.4,
+            child: Padding(
+              padding: PADDING,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 60.h),
+                  SizedBox(height: 118.h),
                   //--------------------------------Email
                   CustomTextField(
                     hintText: 'E mail',
@@ -57,7 +58,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                   ),
-                  SizedBox(height: 50.h),
+                  SizedBox(height: 20.h),
                   //------------------------------Password
                   CustomTextField(
                     hintText: 'Password',
@@ -79,7 +80,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     textInputAction: TextInputAction.done,
                     keyboardType: TextInputType.visiblePassword,
                   ),
-                  SizedBox(height: 50.h),
+                  SizedBox(height: 245.h),
                   //------------------------------Button
                   CustomButton(
                     name: 'Sign In',
@@ -90,44 +91,6 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                   ),
                   SizedBox(height: 5.h),
-
-                  // TextButton(
-                  //   onPressed: () {},
-                  //   child: const Text(
-                  //     'Forgot Password?',
-                  //     style: TextStyle(
-                  //       decoration: TextDecoration.underline,
-                  //       color: Colors.black,
-                  //       fontSize: 16.0,
-                  //     ),
-                  //   ),
-                  // ),
-                  // SizedBox(height: 10),
-                  // Text(
-                  //   'Or',
-                  //   style: TextStyle(
-                  //     color: Colors.black,
-                  //     fontSize: 16.0,
-                  //     fontFamily: 'WorkSansMedium',
-                  //   ),
-                  // ),
-                  // SizedBox(height: 20),
-                  // TextButton.icon(
-                  //   style: TextButton.styleFrom(
-                  //     textStyle: const TextStyle(color: Colors.black),
-                  //     backgroundColor: Colors.white,
-                  //     shape: RoundedRectangleBorder(
-                  //       side: BorderSide(color: Colors.grey),
-                  //       borderRadius: BorderRadius.circular(24.0),
-                  //     ),
-                  //   ),
-                  //   onPressed: () => {},
-                  //   icon: Icon(Icons.adaptive.flip_camera),
-                  //   label: const Text(
-                  //     'Sign in with google',
-                  //     style: TextStyle(color: Colors.black),
-                  //   ),
-                  // ),
                 ],
               ),
             ),

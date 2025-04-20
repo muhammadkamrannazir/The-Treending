@@ -6,6 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:treending/utils/styles.dart';
+import 'package:treending/widgets/button.dart';
+import 'package:treending/widgets/text.dart';
+import 'package:treending/widgets/textfiled.dart';
 
 import 'Model/user_model.dart';
 import '../dashboard/dashboard.dart';
@@ -29,12 +33,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     //--------------------------------full Name
-    final fullnamefeild = TextFormField(
-      autofocus: false,
+    final fullnamefeild = CustomTextField(
+      hintText: 'hintText',
       controller: fullnameController,
-      onSaved: (value) {
-        fullnameController.text = value!;
-      },
       validator: (value) {
         RegExp regex = RegExp(r'^.{3,}$');
         if (value!.isEmpty) {
@@ -45,39 +46,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
         return null;
       },
-      textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
-        hintText: "Name",
-      ),
-    );
-    //--------------------------------user Name
-    final usernamefeild = TextFormField(
-      autofocus: false,
-      controller: usernameController,
       onSaved: (value) {
-        usernameController.text = value!;
-      },
-      validator: (value) {
-        if (value!.isEmpty) {
-          return ("Please Enter user Name");
-        }
-        return null;
+        fullnameController.text = value!;
       },
       textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
-        hintText: "Last Name",
-      ),
+      keyboardType: TextInputType.name,
     );
     //--------------------------------Email
-    final emailfeild = TextFormField(
-      autofocus: false,
-      controller: emailController,
-      keyboardType: TextInputType.emailAddress,
-      onSaved: (value) {
-        emailController.text = value!;
-      },
+    final emailfeild = CustomTextField(
+      hintText: 'hintText',
+      controller: usernameController,
       validator: (value) {
         if (value!.isEmpty) {
           return ("Please Enter Email");
@@ -88,17 +66,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
         return null;
       },
+      keyboardType: TextInputType.emailAddress,
+      onSaved: (value) {
+        emailController.text = value!;
+      },
       textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
-        hintText: "E-mail",
-      ),
     );
     //--------------------------------Password
-    final passwordfeild = TextFormField(
-      autofocus: false,
-      obscureText: true,
+    final passwordfeild = CustomTextField(
+      hintText: "Password",
       controller: passwordController,
+      textInputAction: TextInputAction.next,
+      obscureText: true,
       onSaved: (value) {
         passwordController.text = value!;
       },
@@ -112,77 +91,56 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
         return null;
       },
-      textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
-        hintText: "Password",
-      ),
     );
     //--------------------------------Confirm Password
-    final confirmpassword = TextFormField(
-      autofocus: false,
-      obscureText: true,
+    final confirmpassword = CustomTextField(
+      hintText: 'Confirm Password',
       controller: confirmpasswordController,
-      onSaved: (value) {
-        confirmpasswordController.text = value!;
-      },
+      obscureText: true,
       validator: (value) {
         if (confirmpasswordController.text != passwordController.text) {
           return "Password dont Match";
         }
         return null;
       },
+      onSaved: (value) {
+        confirmpasswordController.text = value!;
+      },
       textInputAction: TextInputAction.done,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 15.h),
-        hintText: "Confirm Password",
-      ),
     );
     //--------------------------------Button
 
-    final loginbutton = SizedBox(
-      height: MediaQuery.of(context).size.height / 18,
-      width: MediaQuery.of(context).size.width / 1.8,
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.r)),
-          ),
-        ),
-        onPressed: () {
-          signUp(emailController.text, passwordController.text);
-        },
-        child: Text(
-          'Sign Up',
-          style: TextStyle(color: Colors.white, fontSize: 20.sp),
-        ),
-      ),
+    final loginbutton = CustomButton(
+      name: 'Sign Up',
+      onPressed: () {
+        signUp(emailController.text, passwordController.text);
+      },
     );
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Center(
           child: Form(
             key: _formKey,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width / 1.4,
+            child: Padding(
+              padding: PADDING,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SizedBox(height: MediaQuery.of(context).size.height / 30),
+                  SizedBox(height: 40.h),
                   fullnamefeild,
                   // SizedBox(height: MediaQuery.of(context).size.height / 30),
                   // usernamefeild,
-                  SizedBox(height: MediaQuery.of(context).size.height / 30),
+                  SizedBox(height: 20.h),
                   emailfeild,
-                  SizedBox(height: MediaQuery.of(context).size.height / 30),
+                  SizedBox(height: 20.h),
                   passwordfeild,
-                  SizedBox(height: MediaQuery.of(context).size.height / 30),
+                  SizedBox(height: 20.h),
                   confirmpassword,
-                  SizedBox(height: MediaQuery.of(context).size.height / 20),
+                  SizedBox(height: 170.h),
                   loginbutton,
-                  SizedBox(height: MediaQuery.of(context).size.height / 60),
+                  SizedBox(height: 20.h),
                   // Text(
                   //   'Or',
                   //   style: TextStyle(
